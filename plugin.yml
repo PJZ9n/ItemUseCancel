@@ -1,0 +1,6 @@
+name: ItemUseCancel
+api: [ 4.0.0 ]
+main: lazyperson0710\ItemUseCancel\Main
+version: 1.0.0
+description: EffectItems
+author: lazyperson0710
