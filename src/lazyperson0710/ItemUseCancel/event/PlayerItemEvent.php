@@ -17,7 +17,6 @@ class PlayerItemEvent implements Listener {
      * @priority LOW
      */
     public function onItemUse(PlayerItemUseEvent $event): void {
-        if ($event->isCancelled()) return;
         $this->onItemEvents($event);
     }
 
@@ -27,7 +26,6 @@ class PlayerItemEvent implements Listener {
      * @priority LOW
      */
     public function onItemInteract(PlayerInteractEvent $event): void {
-        if ($event->isCancelled()) return;
         $this->onItemEvents($event);
     }
 
