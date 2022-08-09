@@ -50,7 +50,7 @@ class PlayerItemEvent implements Listener {
             VanillaItems::ENCHANTED_GOLDEN_APPLE(),
         ];
         foreach ($items as $item) {
-            if ($item->equals($inHand)) {
+            if ($item->equals($inHand, false, false)) {
                 $player->sendTip("ロビーでは金リンゴの使用は許可されていません");
                 $event->cancel();
                 break;
