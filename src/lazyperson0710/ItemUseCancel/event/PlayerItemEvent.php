@@ -5,6 +5,7 @@ namespace lazyperson0710\ItemUseCancel\event;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
+use pocketmine\item\Item;
 use pocketmine\item\Potion;
 use pocketmine\item\SplashPotion;
 use pocketmine\item\VanillaItems;
@@ -43,13 +44,17 @@ class PlayerItemEvent implements Listener {
             $player->sendTip("ロビーではスプラッシュポーションの使用は許可されていません");
             $event->cancel();
         }
+        /** @var Item[] $items */
         $items = [
-            VanillaItems::GOLDEN_APPLE()->getVanillaName(),
-            VanillaItems::ENCHANTED_GOLDEN_APPLE()->getVanillaName(),
+            VanillaItems::GOLDEN_APPLE(),
+            VanillaItems::ENCHANTED_GOLDEN_APPLE(),
         ];
-        if (in_array($inHand->getVanillaName(), $items)) {
-            $player->sendTip("ロビーでは金リンゴの使用は許可されていません");
-            $event->cancel();
+        foreach ($items as $item) {
+            if ($item->equals($inHand)) {
+                $player->sendTip("ロビーでは金リンゴの使用は許可されていません");
+                $event->cancel();
+                break;
+            }
         }
     }
 
